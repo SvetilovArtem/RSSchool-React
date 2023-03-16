@@ -15,6 +15,6 @@ describe('Cards', () => {
               }
         ]} />)
         // eslint-disable-next-line testing-library/prefer-presence-queries
-        expect(screen.queryByText(/Moscow/i)).toBeInTheDocument()
+        expect(screen.getByText(/Moscow/i)).toBeInTheDocument()
     })
 })
