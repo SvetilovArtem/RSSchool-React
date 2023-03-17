@@ -61,7 +61,7 @@ export default class Dropdown extends Component<{isDropdownOpen: boolean}> {
   } 
   render() {
     return (
-      <div className={!this.props.isDropdownOpen ? styles.dropdown + ' ' + styles.dropdownHidden : styles.dropdown }>
+      <ul className={!this.props.isDropdownOpen ? styles.dropdown + ' ' + styles.dropdownHidden : styles.dropdown }>
         <FaDiscord
           color={this.state.isActiveDiscord ? "rgba(255, 70, 70)" : "#ffffff"}
           onMouseEnter={() => this.setState({isActiveDiscord: true})}
@@ -82,7 +82,7 @@ export default class Dropdown extends Component<{isDropdownOpen: boolean}> {
           onMouseEnter={() => this.setState({isActiveTelegram: true})}
           onMouseLeave={() => this.setState({isActiveTelegram: false})}
         />
-      </div>
+      </ul>
     )
   }
 }

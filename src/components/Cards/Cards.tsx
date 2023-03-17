@@ -18,24 +18,26 @@
 
 // export default Cards
 
-import React, { Component } from 'react'
-import { CardType } from '../../types/CardType'
-import Card from '../Card/Card'
-import styles from './Cards.module.scss'
+import React, { Component } from "react";
+import { CardType } from "../../types/CardType";
+import Card from "../Card/Card";
+import styles from "./Cards.module.scss";
 
 interface CardsProps {
-    cards: CardType[]
+  cards: CardType[];
 }
 
-export default class Cards extends Component<{cards: CardType[]}> {
-  constructor(props:CardsProps) {
-    super(props)
+export default class Cards extends Component<{ cards: CardType[] }> {
+  constructor(props: CardsProps) {
+    super(props);
   }
   render() {
     return (
-          <ul className={styles.cards}>
-        {this.props.cards.map(card => <Card card={card} />)}
-    </ul>
-    )
+      <ul className={styles.cards}>
+        {this.props.cards.map((card) => (
+          <Card card={card} />
+        ))}
+      </ul>
+    );
   }
 }

@@ -113,7 +113,7 @@ export default class Main extends Component {
   render() {
     return (
       <div className={styles.main}>
-        <Search onChangeHandler={this.setSearchValue} />
+        <Search onChangeHandler={this.setSearchValue} searchValue={this.state.searchValue} />
         <Cards
           cards={this.state.cards.filter((card) =>
             card.title.toUpperCase().includes(this.state.searchValue.toUpperCase())

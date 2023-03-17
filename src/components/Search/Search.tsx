@@ -33,15 +33,16 @@ import { BsSearch } from 'react-icons/bs'
 import styles from './Search.module.scss'
 
 interface SearchProps {
-  onChangeHandler: (e:any) => void
+  onChangeHandler: (e:any) => void,
+  searchValue: string
 }
 
-export default class Search extends Component<{onChangeHandler: (e:any) => void}> {
+export default class Search extends Component<{onChangeHandler: (e:any) => void, searchValue: string}> {
   constructor(props:SearchProps) {
     super(props)
   }
   state = {
-    isOpen: false
+    isOpen: false,
   }
   setIsOpen(value:boolean) {
     this.setState({isOpen: value})
@@ -56,6 +57,7 @@ export default class Search extends Component<{onChangeHandler: (e:any) => void}
           onBlur={() => this.setIsOpen(false)}
           onFocus={() => this.setIsOpen(true)}
           onChange={e => this.props.onChangeHandler(e.currentTarget.value)}
+          value={this.props.searchValue}
         />
         <BsSearch color='#ffffff' className={styles.searchIcon} />
     </div>

@@ -1,11 +1,18 @@
-import { render, screen } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
+import { fireEvent, render, screen } from "@testing-library/react"
 import React from "react"
 import Search from "./Search"
 
 describe('search', () => {
     it('render Search', () => {
-        render(<Search onChangeHandler={function (e: any): void {} } />)
-        userEvent.type(screen.getByRole('textbox'), 'React')
+        render(<Search onChangeHandler={function (e: string): void { } } searchValue={""} />)
+        // eslint-disable-next-line testing-library/no-debugging-utils
+        screen.debug()
+        fireEvent.change(screen.getByRole('textbox'), {
+            target: { value: 'React' }
+        })
+        // eslint-disable-next-line testing-library/no-debugging-utils
+        screen.debug()
+        expect(screen.getByRole('textbox')).not.toBeRequired()
+        expect(screen.getByRole('textbox')).toHaveAttribute('placeholder')
     })
 })

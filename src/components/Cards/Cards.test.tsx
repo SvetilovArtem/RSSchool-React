@@ -12,9 +12,22 @@ describe('Cards', () => {
                 desc: "Description 1",
                 likes: 40,
                 comments: 24,
-              }
+              },
+              {
+                id: 6,
+                img: "https://image.geo.de/30148152/t/eY/v3/w1440/r1.5/-/tokio-f-292656749-jpg--84404-.jpg",
+                title: "Tokio",
+                desc: "Description 6",
+                likes: 31,
+                comments: 27,
+              },
         ]} />)
-        // eslint-disable-next-line testing-library/prefer-presence-queries
+
         expect(screen.getByText(/Moscow/i)).toBeInTheDocument()
+        
+        
     })
+    // it('cards class', () => {
+    //     expect(screen.getByRole('list')).toHaveClass('cards')
+    // })
 })
