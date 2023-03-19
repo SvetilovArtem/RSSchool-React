@@ -22,12 +22,6 @@ describe('Cards', () => {
                 comments: 27,
               },
         ]} />)
-
-        expect(screen.getByText(/Moscow/i)).toBeInTheDocument()
-        
-        
+        expect(screen.getByText(/Moscow/i)).toBeInTheDocument()    
     })
-    // it('cards class', () => {
-    //     expect(screen.getByRole('list')).toHaveClass('cards')
-    // })
 })

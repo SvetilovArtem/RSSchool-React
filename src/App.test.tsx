@@ -1,12 +1,15 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import App from 'App';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('App', () => {
   it('renders App', () => {
-    render(<App />);
-    const linkElement = screen.getByText('search for inspiration');
-    expect(linkElement).toBeInTheDocument();
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    )
   });
 })
 

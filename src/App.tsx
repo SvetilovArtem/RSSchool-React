@@ -1,22 +1,22 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import ErrorPage from './pages/404/404';
-import About from './pages/About/About';
-import Main from './pages/Main/Main';
+import Layout from "components/Layout/Layout";
+import ErrorPage from "pages/404/404";
+import About from "pages/About/About";
+import Main from "pages/Main/Main";
+import React, { Component } from "react";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <Layout>
-        <Routes>
-          <Route path='/' element={ <Main /> } />
-          <Route path='/about' element={ <About /> } />
-          <Route path='/404' element={ <ErrorPage /> } />
-        </Routes>
-      </Layout>
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </Layout>
+      </div>
+    );
+  }
 }
-
-export default App;
