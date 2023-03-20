@@ -13,8 +13,8 @@ export default class Cards extends Component<CardsProps> {
     const { cards } = this.props
     return (
       <ul className={styles.cards}>
-        {cards.map((card) => (
-          <Card card={card} />
+        {cards.map((card, index) => (
+          <Card card={card} key={index} />
         ))}
       </ul>
     );
