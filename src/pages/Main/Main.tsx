@@ -5,12 +5,13 @@ import Search from "../../components/Search/Search";
 import styles from "./Main.module.scss";
 
 export default class Main extends Component {
-  constructor(props:any) {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  constructor(props: {} | Readonly<{}>) {
     super(props);
-    this.setSearchValue = this.setSearchValue.bind(this)
+    this.setSearchValue = this.setSearchValue.bind(this);
   }
   state = {
-    searchValue: '',
+    searchValue: "",
     cards: [
       {
         id: 1,
@@ -78,17 +79,22 @@ export default class Main extends Component {
       },
     ],
   };
-  setSearchValue(text:string) {
-    this.setState({searchValue: text})
+  setSearchValue(text: string) {
+    this.setState({ searchValue: text });
   }
 
   render() {
     return (
       <div className={styles.main}>
-        <Search onChangeHandler={this.setSearchValue} searchValue={this.state.searchValue} />
+        <Search
+          onChangeHandler={this.setSearchValue}
+          searchValue={this.state.searchValue}
+        />
         <Cards
           cards={this.state.cards.filter((card) =>
-            card.title.toUpperCase().includes(this.state.searchValue.toUpperCase())
+            card.title
+              .toUpperCase()
+              .includes(this.state.searchValue.toUpperCase())
           )}
         />
       </div>

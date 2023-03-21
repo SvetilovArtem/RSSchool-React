@@ -8,9 +8,8 @@ interface CardsProps {
 }
 
 export default class Cards extends Component<CardsProps> {
-
   render() {
-    const { cards } = this.props
+    const { cards } = this.props;
     return (
       <ul className={styles.cards}>
         {cards.map((card, index) => (

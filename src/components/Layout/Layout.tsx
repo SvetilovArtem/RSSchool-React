@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import Header from '../Header/Header'
+import React, { Component } from "react";
+import Header from "../Header/Header";
 
-import styles from './Layout.module.scss'
+import styles from "./Layout.module.scss";
 
 interface LayoutProps {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default class Layout extends Component<LayoutProps> {
@@ -14,8 +14,6 @@ export default class Layout extends Component<LayoutProps> {
         <Header />
         {this.props.children}
       </div>
-    )
+    );
   }
 }
-
-
