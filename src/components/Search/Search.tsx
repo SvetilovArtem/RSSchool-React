@@ -23,6 +23,12 @@ export default class Search extends Component<{
   }
 
   componentDidMount(): void {
+    const inputValue = localStorage.getItem("searchValue");
+    if (inputValue) {
+      this.props.onChangeHandler(inputValue);
+    }
+  }
+  componentWillUnmount(): void {
     localStorage.setItem("searchValue", this.props.searchValue);
   }
   render() {
@@ -44,7 +50,10 @@ export default class Search extends Component<{
           }
           onBlur={() => this.setIsOpen(false)}
           onFocus={() => this.setIsOpen(true)}
-          onChange={(e) => this.props.onChangeHandler(e.currentTarget.value)}
+          onChange={(e) => {
+            this.props.onChangeHandler(e.currentTarget.value);
+            localStorage.setItem("searchValue", this.props.searchValue);
+          }}
           value={this.props.searchValue}
         />
         <BsSearch color="#ffffff" className={styles.searchIcon} />
