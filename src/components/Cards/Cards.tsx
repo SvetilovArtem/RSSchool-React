@@ -1,21 +1,20 @@
-import React, { Component } from "react";
-import { CardType } from "../../types/CardType";
-import Card from "../Card/Card";
-import styles from "./Cards.module.scss";
+import React from 'react'
+import { UserType } from '../../types/UserType'
+import Card from '../Card/Card'
+
+import styles from './Cards.module.scss'
 
 interface CardsProps {
-  cards: CardType[];
+    users: UserType[],
+    avatar: string
 }
 
-export default class Cards extends Component<CardsProps> {
-  render() {
-    const { cards } = this.props;
-    return (
-      <ul className={styles.cards}>
-        {cards.map((card, index) => (
-          <Card card={card} key={index} />
-        ))}
-      </ul>
-    );
-  }
+const Cards = ({ users, avatar }:CardsProps) => {
+  return (
+    <ul className={styles.cards}>
+        {users.map((user,i) => <Card user={user} avatar={avatar} key={i} />)}
+    </ul>
+  )
 }
+
+export default Cards

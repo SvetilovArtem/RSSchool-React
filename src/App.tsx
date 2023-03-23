@@ -1,22 +1,20 @@
-import Layout from "components/Layout/Layout";
-import ErrorPage from "pages/404/404";
-import About from "pages/About/About";
-import Main from "pages/Main/Main";
-import React, { Component } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import Cards from "./components/Cards/Cards";
+import Form from "./components/Form/Form";
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </Layout>
-      </div>
-    );
-  }
+import './index.css'
+
+function App() {
+  const [users, setUsers] = useState([])
+  const [avatar, setAvatar] = useState('')
+  return (
+    <div className='app'>
+      <h2 className="title">React Form App</h2>
+      <Form users={users} setUsers={setUsers} setAvatar={setAvatar} avatar={avatar} />
+      <Cards users={users} avatar={avatar} />
+    </div>
+    
+  )
 }
+
+export default App;
