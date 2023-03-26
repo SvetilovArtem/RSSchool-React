@@ -8,18 +8,16 @@ body {
   background-color: #120907;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
 * {
   box-sizing: border-box;
 }
-h1,h2,h3,p,div,span {
+h1, h2, h3, h4, ul, li, p, span, a {
   margin: 0;
   padding: 0;
-}
-.title {
-  text-align: center;
-  color: #fff;
-}
-.app {
-  padding-top: 50px;
-
+  text-decoration: none;
+  list-style-type: none;
 }
