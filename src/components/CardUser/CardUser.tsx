@@ -4,7 +4,6 @@ import styles from "./CardUser.module.scss";
 
 interface CardProps {
   user: UserType;
-  avatar: string;
 }
 
 export default class CardUser extends Component<CardProps> {

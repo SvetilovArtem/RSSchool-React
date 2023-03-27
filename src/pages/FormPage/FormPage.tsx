@@ -1,29 +1,26 @@
 import CardsUsers from "components/CardsUsers/CardsUsers";
+import Form from "components/Form/Form";
 import React, { Component } from "react";
-import { Form } from "react-router-dom";
 import { UserType } from "types/UserType";
+import styles from "./FormPage.module.scss";
 
 export default class FormPage extends Component {
+  constructor(props: never) {
+    super(props);
+    this.setUsers = this.setUsers.bind(this);
+  }
   state = {
     users: [],
-    avatar: "",
   };
-  setUsers(user: UserType) {
+  setUsers = (user: UserType) => {
     this.setState({ users: [...this.state.users, user] });
-  }
-  setAvatar(avatar: string) {
-    this.setState({ avatar: avatar });
-  }
+  };
   render() {
     return (
-      <div className="app">
+      <div className={styles.formPage}>
         <h2 className="title">React Form</h2>
-        <Form
-          setAvatar={this.setAvatar}
-          avatar={this.state.avatar}
-          setUsers={this.setUsers}
-        />
-        <CardsUsers users={this.state.users} avatar={this.state.avatar} />
+        <Form setUsers={this.setUsers} />
+        <CardsUsers users={this.state.users} />
       </div>
     );
   }

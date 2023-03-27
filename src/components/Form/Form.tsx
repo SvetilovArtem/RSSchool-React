@@ -1,15 +1,23 @@
-import React, { Component, RefAttributes } from "react";
+import React from "react";
 import { UserType } from "../../types/UserType";
-
 import styles from "./Form.module.scss";
 
-interface FormProps extends RefAttributes<HTMLFormElement> {
+interface FormProps {
   setUsers: (data: UserType) => void;
-  setAvatar: (e: string) => void;
-  avatar: string;
 }
 
-export default class Form extends Component<FormProps> {
+export default class Form extends React.Component<FormProps> {
+  inputName = React.createRef<HTMLInputElement>();
+  inputDate = React.createRef<HTMLInputElement>();
+  selectRef = React.createRef<HTMLSelectElement>();
+  switcherRef = React.createRef<HTMLInputElement>();
+  agreeRef = React.createRef<HTMLInputElement>();
+  inputFile = React.createRef<HTMLInputElement>();
+  form = React.createRef<HTMLFormElement>();
+  constructor(props: FormProps) {
+    super(props);
+    this.onSaveUserData = this.onSaveUserData.bind(this);
+  }
   state = {
     errors: {
       inputName: "",
@@ -18,43 +26,49 @@ export default class Form extends Component<FormProps> {
     },
     isValid: false,
     downloadImg: false,
+    avatar: "",
+  };
+  onSaveUserData = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const user: UserType = {
+      name: this.inputName.current?.value || "",
+      date: this.inputDate.current?.value || "",
+      nationality: this.selectRef.current?.value || "",
+      sex: this.switcherRef.current?.checked ? "мужской" : "женский",
+      agree: this.agreeRef.current?.checked || false,
+      img: this.state.avatar || "",
+    };
+    this.props.setUsers(user);
+    this.form.current?.reset();
   };
   render() {
-    const inputName = React.createRef<HTMLInputElement>();
-    const inputDate = React.createRef<HTMLInputElement>();
-    const selectRef = React.createRef<HTMLSelectElement>();
-    const switcherRef = React.createRef<HTMLInputElement>();
-    const agreeRef = React.createRef<HTMLInputElement>();
-    const inputFile = React.createRef<HTMLInputElement>();
-
-    const props = this.props;
-    const setAvatar = props.setAvatar;
-    const setUsers = props.setUsers;
-
     const validate = () => {
       const errors = this.state.errors;
-      if (!inputName.current?.value) {
+      if (!this.inputName.current?.value) {
         errors.inputName = "Please enter your name";
         this.setState({ isValid: false });
       } else {
         errors.inputName = "";
         this.setState({ isValid: true });
       }
-      if (inputName.current?.value && inputName.current?.value.length < 1) {
+      if (
+        this.inputName.current?.value &&
+        this.inputName.current?.value.length < 1
+      ) {
         errors.inputName = "Please enter name more than 2 symbols";
         this.setState({ isValid: false });
       } else {
         errors.inputName = "";
         this.setState({ isValid: true });
       }
-      if (!inputDate.current?.value) {
+      if (!this.inputDate.current?.value) {
         errors.inputDate = "Please enter your birthday";
         this.setState({ isValid: false });
       } else {
         errors.inputDate = "";
         this.setState({ isValid: true });
       }
-      if (!selectRef.current?.value) {
+      if (!this.selectRef.current?.value) {
         errors.selectRef = "Please check your country";
         this.setState({ isValid: false });
       } else {
@@ -63,41 +77,32 @@ export default class Form extends Component<FormProps> {
       }
       return this.state.isValid;
     };
-
-    const onSaveUserData = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      const user: UserType = {
-        name: inputName.current?.value || "",
-        date: inputDate.current?.value || "",
-        nationality: selectRef.current?.value || "",
-        sex: switcherRef.current?.checked ? "мужской" : "женский",
-        agree: agreeRef.current?.checked || false,
-        img: props.avatar || "",
-      };
-      if (setUsers) setUsers(user);
-      console.log("Сохранено");
+    const loadImageFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event.target.files && event.target.files[0]) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (this.inputFile.current !== null) {
+            const imageFile =
+              this.inputFile.current.files && this.inputFile.current.files[0];
+            if (imageFile !== null) {
+              this.setState({
+                avatar: URL.createObjectURL(imageFile),
+              });
+            }
+          }
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
     };
-
-    function loadImageFile() {
-      const FReader = new FileReader();
-      if (!inputFile.current?.files) return null;
-      const file = inputFile.current?.files[0];
-      FReader.readAsDataURL(file);
-      FReader.onload = function (e) {
-        if (setAvatar)
-          setAvatar(
-            typeof e.target?.result === "string" ? e.target?.result : ""
-          );
-      };
-    }
     return (
       <form
         className={styles.form}
+        ref={this.form}
         onSubmit={(e) => {
           e.preventDefault();
           console.log(this.state.errors);
           if (validate()) {
-            onSaveUserData(e);
+            this.onSaveUserData(e);
             this.setState({ downloadImg: false });
           }
         }}
@@ -105,11 +110,11 @@ export default class Form extends Component<FormProps> {
       >
         <div className={styles.inputBlock}>
           <label htmlFor="" className={styles.label}>
-            Имя
+            Name
           </label>
           <input
             type="text"
-            ref={inputName}
+            ref={this.inputName}
             className={""}
             data-testid="name"
           />
@@ -117,11 +122,11 @@ export default class Form extends Component<FormProps> {
         </div>
         <div className={styles.inputBlock}>
           <label htmlFor="" className={styles.label}>
-            Дата рождения
+            Birthday
           </label>
           <input
             type="date"
-            ref={inputDate}
+            ref={this.inputDate}
             className={""}
             data-testid="date"
           />
@@ -129,11 +134,11 @@ export default class Form extends Component<FormProps> {
         </div>
         <div className={styles.selectBlock}>
           <label htmlFor="" className={styles.label}>
-            Национальность
+            Nationality
           </label>
-          <select ref={selectRef} className={""}>
+          <select ref={this.selectRef} className={""}>
             <option value="" disabled selected>
-              Выбрать страну...
+              Choose country...
             </option>
             <option value="Russia">Russia</option>
             <option value="Belarus">Belarus</option>
@@ -144,12 +149,12 @@ export default class Form extends Component<FormProps> {
           <p style={{ color: "red" }}>{this.state.errors.selectRef}</p>
         </div>
         <div className={styles.switcherBlock}>
-          <span>Женский</span>
+          <span>Female</span>
           <label htmlFor="switcher" className={styles.switcher}>
-            <input type="checkbox" id="switcher" ref={switcherRef} />
+            <input type="checkbox" id="switcher" ref={this.switcherRef} />
             <span className={styles.slider}></span>
           </label>
-          <span>Мужской</span>
+          <span>Male</span>
         </div>
         <div className={styles.inputFileBlock}>
           <input
@@ -158,10 +163,10 @@ export default class Form extends Component<FormProps> {
             id="input__file"
             className={styles.inputFile}
             accept="image/*"
-            ref={inputFile}
-            onChange={() => {
+            ref={this.inputFile}
+            onChange={(e) => {
               this.setState({ downloadImg: true });
-              loadImageFile();
+              loadImageFile(e);
             }}
           />
           <label htmlFor="input__file" className={styles.inputFileButton}>
@@ -173,7 +178,7 @@ export default class Form extends Component<FormProps> {
                 width="25"
               />
             </span>
-            <span className={styles.inputFileButtonText}>Выберите файл</span>
+            <span className={styles.inputFileButtonText}>Choose file...</span>
           </label>
           {this.state.downloadImg && (
             <span className={styles.okIcon}>
@@ -196,15 +201,15 @@ export default class Form extends Component<FormProps> {
             id="accept"
             type="checkbox"
             className={styles.checkbox}
-            ref={agreeRef}
+            ref={this.agreeRef}
           />
           <label htmlFor="accept" className={styles.agree}>
-            Даю согласие на обработку персональных данных
+            I agree to the processing of personal data
           </label>
         </div>
 
         <button className={styles.submitButton} type="submit">
-          Сохранить
+          Save
         </button>
       </form>
     );
