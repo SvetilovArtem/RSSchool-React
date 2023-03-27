@@ -39,7 +39,6 @@ export default class Form extends React.Component<FormProps> {
       img: this.state.avatar || "",
     };
     this.props.setUsers(user);
-    this.form.current?.reset();
   };
   render() {
     const validate = () => {
@@ -51,16 +50,13 @@ export default class Form extends React.Component<FormProps> {
         errors.inputName = "";
         this.setState({ isValid: true });
       }
-      if (
-        this.inputName.current?.value &&
-        this.inputName.current?.value.length < 1
-      ) {
-        errors.inputName = "Please enter name more than 2 symbols";
-        this.setState({ isValid: false });
-      } else {
-        errors.inputName = "";
-        this.setState({ isValid: true });
-      }
+      // if (this.inputName.current?.value.length < 1) {
+      //   errors.inputName = "Please enter name more than 2 symbols";
+      //   this.setState({ isValid: false });
+      // } else {
+      //   errors.inputName = "";
+      //   this.setState({ isValid: true });
+      // }
       if (!this.inputDate.current?.value) {
         errors.inputDate = "Please enter your birthday";
         this.setState({ isValid: false });
