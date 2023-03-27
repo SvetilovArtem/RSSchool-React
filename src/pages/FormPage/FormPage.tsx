@@ -22,7 +22,6 @@ export default class FormPage extends Component {
           setAvatar={this.setAvatar}
           avatar={this.state.avatar}
           setUsers={this.setUsers}
-          users={this.state.users}
         />
         <CardsUsers users={this.state.users} avatar={this.state.avatar} />
       </div>

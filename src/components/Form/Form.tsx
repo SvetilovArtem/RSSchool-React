@@ -4,10 +4,9 @@ import { UserType } from "../../types/UserType";
 import styles from "./Form.module.scss";
 
 interface FormProps extends RefAttributes<HTMLFormElement> {
-  setUsers?: (e: UserType) => void;
-  users?: UserType[];
-  setAvatar?: (e: string) => void;
-  avatar?: string;
+  setUsers: (data: UserType) => void;
+  setAvatar: (e: string) => void;
+  avatar: string;
 }
 
 export default class Form extends Component<FormProps> {
@@ -18,7 +17,6 @@ export default class Form extends Component<FormProps> {
       selectRef: "",
     },
     isValid: false,
-    users: this.props.users,
     downloadImg: false,
   };
   render() {

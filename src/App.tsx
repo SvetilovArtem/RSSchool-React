@@ -1,8 +1,8 @@
 import Layout from "components/Layout/Layout";
 import ErrorPage from "pages/404/404";
 import About from "pages/About/About";
-import FormPage from "pages/FormPage/FormPage";
 import Main from "pages/Main/Main";
+import FormPage from "pages/FormPage/FormPage";
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 
