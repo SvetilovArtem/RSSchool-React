@@ -34,7 +34,7 @@ export default class Form extends React.Component<FormProps> {
       name: this.inputName.current?.value || "",
       date: this.inputDate.current?.value || "",
       nationality: this.selectRef.current?.value || "",
-      sex: this.switcherRef.current?.checked ? "мужской" : "женский",
+      sex: this.switcherRef.current?.checked ? "male" : "female",
       agree: this.agreeRef.current?.checked || false,
       img: this.state.avatar || "",
     };
@@ -100,7 +100,6 @@ export default class Form extends React.Component<FormProps> {
         ref={this.form}
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(this.state.errors);
           if (validate()) {
             this.onSaveUserData(e);
             this.setState({ downloadImg: false });

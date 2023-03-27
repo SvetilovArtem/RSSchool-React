@@ -14,22 +14,22 @@ export default class CardUser extends Component<CardProps> {
 
         <div className={styles.info}>
           <div className={styles.infoItem}>
-            <span className={styles.infoItemName}>Имя: </span>
+            <span className={styles.infoItemName}>Name: </span>
             <span>{this.props.user.name}</span>
           </div>
 
           <div className={styles.infoItem}>
-            <span className={styles.infoItemName}>Дата рождения: </span>
+            <span className={styles.infoItemName}>Birthday: </span>
             <span>{this.props.user.date}</span>
           </div>
 
           <div className={styles.infoItem}>
-            <span className={styles.infoItemName}>Пол: </span>
+            <span className={styles.infoItemName}>Gender: </span>
             <span>{this.props.user.sex}</span>
           </div>
 
           <div className={styles.infoItem}>
-            <span className={styles.infoItemName}>Национальность: </span>
+            <span className={styles.infoItemName}>Nationality: </span>
             <span>{this.props.user.nationality}</span>
           </div>
         </div>
