@@ -6,7 +6,9 @@ describe("search", () => {
   it("render Search", () => {
     render(
       <Search
-        onChangeHandler={function (e: string): void {}}
+        onChangeHandler={function (e: string): void {
+          e;
+        }}
         searchValue={""}
       />
     );

@@ -30,6 +30,11 @@ export default class Form extends React.Component<FormProps> {
   };
   onSaveUserData = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    this.validateInput(this.inputName.current);
+    this.validateInput(this.inputFile.current);
+    this.validateInput(this.inputDate.current);
+    this.validateInput(this.selectRef.current);
+
     const user: UserType = {
       name: this.inputName.current?.value || "",
       date: this.inputDate.current?.value || "",
@@ -40,39 +45,25 @@ export default class Form extends React.Component<FormProps> {
     };
     this.props.setUsers(user);
   };
+  validateInput(input: HTMLInputElement | HTMLSelectElement | null) {
+    if (!input) return;
+
+    if (input.value && input.value.length < 1) {
+      input.setCustomValidity("Value should contain min 1 symbols");
+    } else if (!input.value)
+      input.setCustomValidity("Value should not be empty");
+    else input.setCustomValidity("");
+  }
+
+  isFormInvalid = () => {
+    return (
+      !!this.inputName.current?.validationMessage ||
+      !!this.inputFile.current?.validationMessage ||
+      !!this.inputDate.current?.validationMessage ||
+      !!this.selectRef.current?.validationMessage
+    );
+  };
   render() {
-    const validate = () => {
-      const errors = this.state.errors;
-      if (!this.inputName.current?.value) {
-        errors.inputName = "Please enter your name";
-        this.setState({ isValid: false });
-      } else {
-        errors.inputName = "";
-        this.setState({ isValid: true });
-      }
-      // if (this.inputName.current?.value.length < 1) {
-      //   errors.inputName = "Please enter name more than 2 symbols";
-      //   this.setState({ isValid: false });
-      // } else {
-      //   errors.inputName = "";
-      //   this.setState({ isValid: true });
-      // }
-      if (!this.inputDate.current?.value) {
-        errors.inputDate = "Please enter your birthday";
-        this.setState({ isValid: false });
-      } else {
-        errors.inputDate = "";
-        this.setState({ isValid: true });
-      }
-      if (!this.selectRef.current?.value) {
-        errors.selectRef = "Please check your country";
-        this.setState({ isValid: false });
-      } else {
-        errors.selectRef = "";
-        this.setState({ isValid: true });
-      }
-      return this.state.isValid;
-    };
     const loadImageFile = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (event.target.files && event.target.files[0]) {
         const reader = new FileReader();
@@ -96,7 +87,9 @@ export default class Form extends React.Component<FormProps> {
         ref={this.form}
         onSubmit={(e) => {
           e.preventDefault();
-          if (validate()) {
+          if (this.isFormInvalid()) {
+            this.forceUpdate();
+          } else {
             this.onSaveUserData(e);
             this.setState({ downloadImg: false });
           }
@@ -113,7 +106,9 @@ export default class Form extends React.Component<FormProps> {
             className={""}
             data-testid="name"
           />
-          <p style={{ color: "red" }}>{this.state.errors.inputName}</p>
+          <p style={{ color: "red" }}>
+            {this.inputName.current?.validationMessage}
+          </p>
         </div>
         <div className={styles.inputBlock}>
           <label htmlFor="" className={styles.label}>
@@ -125,14 +120,16 @@ export default class Form extends React.Component<FormProps> {
             className={""}
             data-testid="date"
           />
-          <p style={{ color: "red" }}>{this.state.errors.inputDate}</p>
+          <p style={{ color: "red" }}>
+            {this.inputDate.current?.validationMessage}
+          </p>
         </div>
         <div className={styles.selectBlock}>
           <label htmlFor="" className={styles.label}>
             Nationality
           </label>
-          <select ref={this.selectRef} className={""}>
-            <option value="" disabled selected>
+          <select ref={this.selectRef} className={""} defaultValue="">
+            <option value="" disabled>
               Choose country...
             </option>
             <option value="Russia">Russia</option>
@@ -141,7 +138,9 @@ export default class Form extends React.Component<FormProps> {
             <option value="USA">USA</option>
             <option value="Canada">Canada</option>
           </select>
-          <p style={{ color: "red" }}>{this.state.errors.selectRef}</p>
+          <p style={{ color: "red" }}>
+            {this.selectRef.current?.validationMessage}
+          </p>
         </div>
         <div className={styles.switcherBlock}>
           <span>Female</span>
