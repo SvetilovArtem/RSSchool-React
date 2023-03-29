@@ -152,9 +152,7 @@ export default class Form extends React.Component<FormProps> {
         </div>
         <div className={styles.inputFileBlock}>
           <input
-            name="file"
             type="file"
-            id="input__file"
             className={styles.inputFile}
             accept="image/*"
             ref={this.inputFile}
