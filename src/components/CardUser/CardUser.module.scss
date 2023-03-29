@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    background-color: #21213a;
+    border-radius: 9px;
+    min-width: 340px;
+    padding: 14px 20px;
+    color: #fff;
+    
+    img {
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+    .info {
+        .infoItem:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        .infoItemName {
+            font-weight: 700;
+        }
+    }
+}
