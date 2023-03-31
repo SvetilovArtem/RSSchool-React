@@ -10,6 +10,7 @@ class Header extends Component {
     const navs = [
       { name: "Main", path: "/" },
       { name: "About", path: "/about" },
+      { name: "Form", path: "/form" },
     ];
 
     return (

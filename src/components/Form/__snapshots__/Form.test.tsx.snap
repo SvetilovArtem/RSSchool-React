@@ -1,0 +1,390 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form tests Form snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <form
+        class="form"
+        data-testid="react-form"
+      >
+        <div
+          class="inputBlock"
+        >
+          <label
+            class="label"
+            for=""
+          >
+            Name
+          </label>
+          <input
+            class=""
+            data-testid="name"
+            type="text"
+          />
+          <p
+            style="color: red;"
+          />
+        </div>
+        <div
+          class="inputBlock"
+        >
+          <label
+            class="label"
+            for=""
+          >
+            Birthday
+          </label>
+          <input
+            class=""
+            data-testid="date"
+            type="date"
+          />
+          <p
+            style="color: red;"
+          />
+        </div>
+        <div
+          class="selectBlock"
+        >
+          <label
+            class="label"
+            for=""
+          >
+            Nationality
+          </label>
+          <select
+            class=""
+          >
+            <option
+              disabled=""
+              value=""
+            >
+              Choose country...
+            </option>
+            <option
+              value="Russia"
+            >
+              Russia
+            </option>
+            <option
+              value="Belarus"
+            >
+              Belarus
+            </option>
+            <option
+              value="Ukraine"
+            >
+              Ukraine
+            </option>
+            <option
+              value="USA"
+            >
+              USA
+            </option>
+            <option
+              value="Canada"
+            >
+              Canada
+            </option>
+          </select>
+          <p
+            style="color: red;"
+          />
+        </div>
+        <div
+          class="switcherBlock"
+        >
+          <span>
+            Female
+          </span>
+          <label
+            class="switcher"
+            for="switcher"
+          >
+            <input
+              id="switcher"
+              type="checkbox"
+            />
+            <span
+              class="slider"
+            />
+          </label>
+          <span>
+            Male
+          </span>
+        </div>
+        <div
+          class="inputFileBlock"
+        >
+          <input
+            accept="image/*"
+            class="inputFile"
+            id="input__file"
+            name="file"
+            type="file"
+          />
+          <label
+            class="inputFileButton"
+            for="input__file"
+          >
+            <span
+              class="inputFileIconWrapper"
+            >
+              <img
+                alt="Выбрать файл"
+                class="inputFileIcon"
+                src="./img/icon-download.png"
+                width="25"
+              />
+            </span>
+            <span
+              class="inputFileButtonText"
+            >
+              Choose file...
+            </span>
+          </label>
+        </div>
+        <div
+          class="agreeBlock"
+        >
+          <input
+            class="checkbox"
+            id="accept"
+            type="checkbox"
+          />
+          <label
+            class="agree"
+            for="accept"
+          >
+            I agree to the processing of personal data
+          </label>
+        </div>
+        <button
+          class="submitButton"
+          type="submit"
+        >
+          Save
+        </button>
+      </form>
+    </div>
+  </body>,
+  "container": <div>
+    <form
+      class="form"
+      data-testid="react-form"
+    >
+      <div
+        class="inputBlock"
+      >
+        <label
+          class="label"
+          for=""
+        >
+          Name
+        </label>
+        <input
+          class=""
+          data-testid="name"
+          type="text"
+        />
+        <p
+          style="color: red;"
+        />
+      </div>
+      <div
+        class="inputBlock"
+      >
+        <label
+          class="label"
+          for=""
+        >
+          Birthday
+        </label>
+        <input
+          class=""
+          data-testid="date"
+          type="date"
+        />
+        <p
+          style="color: red;"
+        />
+      </div>
+      <div
+        class="selectBlock"
+      >
+        <label
+          class="label"
+          for=""
+        >
+          Nationality
+        </label>
+        <select
+          class=""
+        >
+          <option
+            disabled=""
+            value=""
+          >
+            Choose country...
+          </option>
+          <option
+            value="Russia"
+          >
+            Russia
+          </option>
+          <option
+            value="Belarus"
+          >
+            Belarus
+          </option>
+          <option
+            value="Ukraine"
+          >
+            Ukraine
+          </option>
+          <option
+            value="USA"
+          >
+            USA
+          </option>
+          <option
+            value="Canada"
+          >
+            Canada
+          </option>
+        </select>
+        <p
+          style="color: red;"
+        />
+      </div>
+      <div
+        class="switcherBlock"
+      >
+        <span>
+          Female
+        </span>
+        <label
+          class="switcher"
+          for="switcher"
+        >
+          <input
+            id="switcher"
+            type="checkbox"
+          />
+          <span
+            class="slider"
+          />
+        </label>
+        <span>
+          Male
+        </span>
+      </div>
+      <div
+        class="inputFileBlock"
+      >
+        <input
+          accept="image/*"
+          class="inputFile"
+          id="input__file"
+          name="file"
+          type="file"
+        />
+        <label
+          class="inputFileButton"
+          for="input__file"
+        >
+          <span
+            class="inputFileIconWrapper"
+          >
+            <img
+              alt="Выбрать файл"
+              class="inputFileIcon"
+              src="./img/icon-download.png"
+              width="25"
+            />
+          </span>
+          <span
+            class="inputFileButtonText"
+          >
+            Choose file...
+          </span>
+        </label>
+      </div>
+      <div
+        class="agreeBlock"
+      >
+        <input
+          class="checkbox"
+          id="accept"
+          type="checkbox"
+        />
+        <label
+          class="agree"
+          for="accept"
+        >
+          I agree to the processing of personal data
+        </label>
+      </div>
+      <button
+        class="submitButton"
+        type="submit"
+      >
+        Save
+      </button>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
