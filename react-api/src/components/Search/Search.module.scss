@@ -1,0 +1,27 @@
+.search {
+    position: relative;
+    max-width: 280px;
+    padding: 10px 8px 10px 27px;
+    background-color: #21213a;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    
+    .searchInput {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: #fff;
+        font-size: 16px;
+        line-height: 19px;
+    }
+    .searchIcon {
+        position: absolute;
+        left: 5px;
+        top: 13px;
+    }
+}
+.hidden {
+    background-color: transparent;
+}
