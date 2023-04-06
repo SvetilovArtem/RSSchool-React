@@ -11,6 +11,7 @@ export default class FormPage extends Component {
   }
   state = {
     users: [],
+    avatar: "",
   };
   setUsers = (user: UserType) => {
     this.setState({ users: [...this.state.users, user] });
@@ -19,7 +20,7 @@ export default class FormPage extends Component {
     return (
       <div className={styles.formPage}>
         <h2 className="title">React Form</h2>
-        <Form setUsers={this.setUsers} />
+        <Form setUsers={this.setUsers} img={this.state.avatar} />
         <CardsUsers users={this.state.users} />
       </div>
     );

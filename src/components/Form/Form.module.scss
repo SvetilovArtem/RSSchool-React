@@ -198,6 +198,9 @@
         -moz-box-shadow: 0px 5px 10px 5px rgba(0, 145, 255, 0.471);
         box-shadow: 0px 5px 10px 5px rgba(0, 145, 255, 0.471);
     }
+    &:active {
+        background: #0c9b7f;
+    }
 }
 .disabledButton {
     padding: 10px 5px;

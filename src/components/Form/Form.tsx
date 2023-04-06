@@ -6,9 +6,10 @@ import styles from "./Form.module.scss";
 
 interface FormProps {
   setUsers: (data: UserType) => void;
+  img: string;
 }
 
-const Form = ({ setUsers }: FormProps) => {
+const Form = ({ setUsers, img }: FormProps) => {
   const {
     register,
     handleSubmit,
@@ -18,7 +19,7 @@ const Form = ({ setUsers }: FormProps) => {
     mode: "onChange",
   });
 
-  const [avatar, setAvatar] = useState<string | ArrayBuffer | null>("");
+  const [avatar, setAvatar] = useState<string>(img);
   const data = {
     name: getValues("name"),
     date: getValues("date"),
@@ -34,13 +35,16 @@ const Form = ({ setUsers }: FormProps) => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   function readFile() {
+    const FReader = new FileReader();
     if (!inputFile.current?.files) return null;
     const file = inputFile.current?.files[0];
-    const reader = new FileReader();
-    reader.onload = function () {
-      setAvatar(reader.result);
+    FReader.onload = function (e) {
+      if (!e.target) return null;
+      if (typeof e.target.result === "string") {
+        setAvatar(e.target.result);
+      }
     };
-    reader.readAsDataURL(file);
+    FReader.readAsDataURL(file);
   }
   return (
     <form
@@ -60,6 +64,11 @@ const Form = ({ setUsers }: FormProps) => {
             required: {
               value: true,
               message: "Field is required",
+            },
+            pattern: {
+              value: /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/i,
+              message:
+                "Field should be contains from 1 to 23 letters. No numbers.",
             },
           })}
         />
@@ -95,7 +104,7 @@ const Form = ({ setUsers }: FormProps) => {
           })}
           className={""}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Choose country...
           </option>
           <option value="Russia">Russia</option>
