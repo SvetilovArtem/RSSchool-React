@@ -15,6 +15,7 @@ const Form = ({ setUsers, img }: FormProps) => {
     handleSubmit,
     formState: { errors, isValid },
     getValues,
+    reset,
   } = useForm<IShippingFields>({
     mode: "onChange",
   });
@@ -31,6 +32,7 @@ const Form = ({ setUsers, img }: FormProps) => {
 
   const onSaveUserData = () => {
     setUsers(data);
+    reset();
   };
   const inputFile = useRef<HTMLInputElement>(null);
 
