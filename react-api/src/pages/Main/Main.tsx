@@ -1,6 +1,6 @@
 import Cards from "components/Cards/Cards";
 import Search from "components/Search/Search";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Main.module.scss";
 import { fetchData } from "api/api";
 import { ICharacter } from "models/models";
@@ -26,20 +26,6 @@ const Main = () => {
       setShowCards(false);
     }
   };
-  // useEffect(() => {
-  //   if (searchValue.length > 1) {
-  //     setShowCards(true);
-  //     setIsLoading(true);
-  //     setTimeout(() => {
-  //       fetchData(searchValue).then((data) => {
-  //         setCards(data.results);
-  //         setIsLoading(false);
-  //       });
-  //     }, 2000);
-  //   } else {
-  //     setShowCards(false);
-  //   }
-  // }, [searchValue]);
 
   return (
     <div className={styles.main}>
@@ -51,12 +37,9 @@ const Main = () => {
       {isLoading && (
         <p style={{ color: "white", textAlign: "center" }}>Loading ...</p>
       )}
-      {showCards && <Cards cards={cards} />}
+      {showCards && <Cards cards={cards} isLoading={isLoading} />}
     </div>
   );
 };
 
 export default Main;
-// //           cards={cards.filter((card) =>
-// card.name.toUpperCase().includes(searchValue.toUpperCase())
-// )}

@@ -1,0 +1,47 @@
+.overlay {
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+}
+.modal {
+    position: fixed;
+    top: 10%;
+    width: 420px;
+    left: calc(50% - 210px);
+    background-color: #21213a;
+    border-radius: 8px;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    img {
+        width: 100%;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .info {
+        width: 100%;
+        padding: 10px;
+        .textLighter {
+            color: #98ff3e;
+        }
+    }
+    .closeBtn {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        border-radius: 4px;
+        padding: 0px 5px;
+        background-color: rgba(244, 90, 90, 1);
+        color: #fff;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(244, 90, 90, 0.75);
+        }
+    }
+}

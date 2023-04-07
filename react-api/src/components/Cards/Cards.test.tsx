@@ -6,6 +6,7 @@ describe("Cards", () => {
   it("cards render", () => {
     render(
       <Cards
+        isLoading={false}
         cards={[
           {
             id: 38,
